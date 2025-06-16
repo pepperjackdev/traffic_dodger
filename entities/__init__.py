@@ -1,5 +1,5 @@
 from .entity import Entity
-from .enemy import Enemy
 from .player import Player
+from .enemy import Enemy
 
-__all__ = ["entity", "enemy", "player"]
+__all__ = ["Entity", "Player", "Enemy"]
