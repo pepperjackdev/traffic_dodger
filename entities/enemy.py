@@ -1,5 +1,6 @@
 import pygame
-from entity import Entity
+
+from entities import Entity
 from random import randint
 from locals import MARGIN, inc_score
 

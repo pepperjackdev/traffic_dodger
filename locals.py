@@ -1,4 +1,3 @@
-import pygame
 
 """ Constants """
 MARGIN = 40

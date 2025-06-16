@@ -2,15 +2,13 @@ import pygame
 import sys
 import time
 
-from entity import Entity
-from player import Player
-from enemy import Enemy
 from pygame.locals import QUIT
+from entities import Entity, Enemy, Player
 from locals import get_score
 
 _WINDOW_WIDTH = _WINDOW_HEIGHT = 600
 _WINDOW_SIZE = (_WINDOW_WIDTH, _WINDOW_HEIGHT)
-_FPS = 15
+_FPS = 60
 
 def main():
     pygame.init()
@@ -42,10 +40,11 @@ def main():
     all_sprites.add(player)
     all_sprites.add(enemies)
 
-    # user event
+    # user events
     INCREASE_SPEED = pygame.USEREVENT + 1
     pygame.time.set_timer(INCREASE_SPEED, 1000)
 
+    # main loop
     while True:
         # dispatching events
         for event in pygame.event.get():
