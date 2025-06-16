@@ -1,0 +1,5 @@
+# vscode
+.vscode/
+
+# python caches
+__pychache__/
