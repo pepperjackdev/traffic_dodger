@@ -1,11 +1,13 @@
-from pygame.sprite import AbstractGroup
+from pygame import Surface
 from . import Entity
-from locals import ENEMY_IMAGE
-
-_DEFAULT_POTENTIAL_ENEMY_X_SPEED = 5
-_DEFAULT_POTENTIAL_ENEMY_Y_SPEED = 0
-_DEFAULT_POTENTIAL_ENEMY_SPEED = _DEFAULT_POTENTIAL_ENEMY_X_SPEED, _DEFAULT_POTENTIAL_ENEMY_Y_SPEED
 
 class Enemy(Entity):
-    def __init__(self, pos: tuple[int, int]) -> None:
-        super().__init__(pos, _DEFAULT_POTENTIAL_ENEMY_SPEED, ENEMY_IMAGE)
+    def __init__(self, center: tuple[int, int]) -> None:
+        super().__init__(center, "assets/images/enemy.png")
+        self._speedx, self._speedy = (0, 5)
+    
+    def update(self, surface: Surface) -> None:
+        assert self.rect != None
+        self.rect.move_ip((self._speedx, self._speedy))
+        if self.rect.top > surface.height:
+            self.rect.y = 0 - self.rect.height
