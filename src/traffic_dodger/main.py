@@ -5,10 +5,13 @@ from pygame.locals import QUIT
 from game import Game
 
 _WINDOW_TITLE = "Traffic Dodger"
+
 _WINDOW_WIDTH = 600
 _WINDOW_HEIGHT = 600
 _WINDOW_SIZE = _WINDOW_WIDTH, _WINDOW_HEIGHT
+
 _FRAMERATE = 60
+
 _BACKGROUND = (100, 100, 100)
 
 def main():
