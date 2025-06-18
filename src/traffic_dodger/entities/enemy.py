@@ -1,13 +1,12 @@
-from pygame import Surface
+from typing import Any
+import pygame
 from . import Entity
+from random import randint
+
+def _default_enemy_position(surface: pygame.surface.Surface):
+    return (randint(0, surface.width), 0 - 100)
 
 class Enemy(Entity):
-    def __init__(self, center: tuple[int, int]) -> None:
-        super().__init__(center, "assets/images/enemy.png")
-        self._speedx, self._speedy = (0, 5)
-    
-    def update(self, surface: Surface) -> None:
-        assert self.rect != None
-        self.rect.move_ip((self._speedx, self._speedy))
-        if self.rect.top > surface.height:
-            self.rect.y = 0 - self.rect.height
+    def __init__(self, surface: pygame.surface.Surface, center: tuple[int, int] | None, *groups: pygame.sprite.Group) -> None:
+        if center == None: center = _default_enemy_position(surface)
+        super().__init__(center, "assets/images/enemy.png", *groups)

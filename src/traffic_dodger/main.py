@@ -2,39 +2,40 @@ import pygame
 import sys
 
 from pygame.locals import QUIT
-from entities import Player, Enemy
 from game import Game
 
+_WINDOW_TITLE = "Traffic Dodger"
+_WINDOW_WIDTH = 600
+_WINDOW_HEIGHT = 600
+_WINDOW_SIZE = _WINDOW_WIDTH, _WINDOW_HEIGHT
+_FRAMERATE = 60
+_BACKGROUND = (100, 100, 100)
+
 def main():
-    pygame.display.set_caption("Traffic Dodger")
-    pygame.display.set_mode((600, 600))
+    pygame.display.set_caption(_WINDOW_TITLE)
+    pygame.display.set_mode(_WINDOW_SIZE)
 
     surface = pygame.display.get_surface()
     assert surface != None
-
     fps = pygame.time.Clock()
-
-    # populating _enemies
-    enemies = pygame.sprite.Group()
-    enemies.add(Enemy((300, 100)))
-    game = Game(Player((300, 500)), enemies)
-
+    
+    game = Game(surface)
+    
     pygame.init()
-
+    
     while True:
         for event in pygame.event.get():
             if event.type == QUIT:
                 pygame.quit()
                 sys.exit()
-
+    
         game.update(surface)
-
-        surface.fill((100, 100, 100))
-
+    
+        surface.fill(_BACKGROUND)
         game.draw(surface)
-
+    
         pygame.display.update()
-        fps.tick(60)
+        fps.tick(_FRAMERATE)
 
 if __name__ == "__main__":
     main()

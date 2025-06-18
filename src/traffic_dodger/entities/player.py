@@ -1,15 +1,12 @@
 import pygame
 from . import Entity
-from pygame.locals import K_LEFT, K_RIGHT
+
+_DEFAULT_PLAYER_MARGIN_FROM_BOTTOM = 100
+
+def _default_player_position(surface: pygame.surface.Surface): 
+    return (surface.width // 2, surface.height - _DEFAULT_PLAYER_MARGIN_FROM_BOTTOM)
 
 class Player(Entity):
-    def __init__(self, center: tuple[int, int]) -> None:
-        super().__init__(center, "assets/images/player.png")
-
-    def update(self, surface: pygame.surface.Surface) -> None:
-        pressed_keys = pygame.key.get_pressed()
-        assert self.rect != None
-        if pressed_keys[K_LEFT] and self.rect.left > 0:
-            self.rect.move_ip((-5, 0))
-        if pressed_keys[K_RIGHT] and self.rect.right < surface.width:
-            self.rect.move_ip((5, 0))
+    def __init__(self, surface: pygame.surface.Surface, center: tuple[int, int] | None, *groups: pygame.sprite.Group) -> None:
+        if center == None: center = _default_player_position(surface)
+        super().__init__(center, "assets/images/player.png", *groups)

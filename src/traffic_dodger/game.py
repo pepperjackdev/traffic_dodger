@@ -1,15 +1,13 @@
 import pygame
-
-from pygame.sprite import Group
-from pygame.surface import Surface
-from entities import Player
+from entities import Player, Enemy
 
 class Game:
-    def __init__(self, player: Player, enemies: Group) -> None:
-        self._enemies = enemies
-        self._sprites = Group()
-        self._sprites.add(player)
-        self._sprites.add(enemies)
+    def __init__(self, surface: pygame.surface.Surface) -> None:
+        self._enemies = pygame.sprite.Group()
+        self._sprites = pygame.sprite.Group()
+
+        Player(surface, None, self._sprites)
+        Enemy(surface, None, self._enemies, self._sprites)
 
     def game_over(self) -> bool:
         for sprite in self._sprites.sprites():
@@ -17,9 +15,9 @@ class Game:
                 return False
         return True
 
-    def update(self, surface: Surface):
+    def update(self, surface: pygame.surface.Surface):
         if self.game_over(): return
         self._sprites.update(surface)
 
-    def draw(self, surface: Surface):
+    def draw(self, surface: pygame.surface.Surface):
         self._sprites.draw(surface)
