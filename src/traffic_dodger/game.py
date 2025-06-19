@@ -14,7 +14,7 @@ class Game:
     def update(self, surface: pygame.surface.Surface):
         if self.game_over(): return
         self._populate_enemies_group(surface)
-        self._sprites.update(surface)
+        self._sprites.update(surface, self._player.speed())
         self._check_for_crashes()
 
     def player(self) -> Player:
@@ -28,7 +28,7 @@ class Game:
                 if isinstance(collided, Entity): collided.hit()
     
     def _populate_enemies_group(self, surface: pygame.surface.Surface):
-        if randint(100 - len(self._enemies.sprites()), 100) == 100: 
+        if randint(100 - len(self._enemies.sprites() * 2), 100) == 100: 
             Enemy(surface, None, self._enemies, self._sprites)
 
     def draw(self, surface: pygame.surface.Surface):
