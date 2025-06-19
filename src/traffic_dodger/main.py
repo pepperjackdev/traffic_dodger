@@ -32,10 +32,10 @@ def main():
                 pygame.quit()
                 sys.exit()
     
-        game.update(surface)
+        game.update()
     
         surface.fill(_BACKGROUND)
-        game.draw(surface)
+        game.draw_sprites(surface)
     
         pygame.display.update()
         fps.tick(_FRAMERATE)
