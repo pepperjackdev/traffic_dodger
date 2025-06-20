@@ -25,7 +25,7 @@ class Game:
         return self._player.absolute_speed()
     
     def _spawn_enemy(self):
-        Enemy(_default_enemy_position(self._surface), self._enemies, self._sprites)
+        Enemy(_default_enemy_position(self._surface), (-3, 3, 4, 6), self._enemies, self._sprites)
     
     def draw_sprites(self, surface: pygame.surface.Surface):
         self._sprites.draw(surface)
