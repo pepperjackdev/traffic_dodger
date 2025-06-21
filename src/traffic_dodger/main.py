@@ -10,6 +10,10 @@ _WINDOW_WIDTH = 600
 _WINDOW_HEIGHT = 600
 _WINDOW_SIZE = _WINDOW_WIDTH, _WINDOW_HEIGHT
 
+_WINDOW_CENTER_X = _WINDOW_WIDTH // 2
+_WINDOW_CENTER_Y = _WINDOW_HEIGHT // 2
+_WINDOW_CENTER = _WINDOW_CENTER_X, _WINDOW_CENTER_Y
+
 _FRAMERATE = 60
 
 _BACKGROUND = (100, 100, 100)
@@ -35,7 +39,7 @@ def main():
         game.update()
     
         surface.fill(_BACKGROUND)
-        game.draw_sprites(surface)
+        game.draw(surface)
     
         pygame.display.update()
         fps.tick(_FRAMERATE)

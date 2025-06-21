@@ -1,30 +1,14 @@
-import pygame
-from pygame.locals import K_a, K_d, K_w, K_s
-
+from pygame.sprite import Group
 from . import Entity
 
 class Player(Entity):
-    def __init__(self, center: tuple[int, int], *groups: pygame.sprite.Group) -> None:
-        super().__init__(center, (0, -5), "assets/images/player.png", *groups)
+    def __init__(self, 
+                 absolute_position: tuple[int, int], 
+                 absolute_direction: float, 
+                 absolute_speed: tuple[int, int],
+                 *groups: Group) -> None:
+        super().__init__(absolute_position, absolute_direction, absolute_speed, "assets/images/car.png", *groups)
 
-    @staticmethod
-    def _x_variation():
-        keys = pygame.key.get_pressed()
-        x_variation = 0
-        if keys[K_a]: x_variation -= 5
-        if keys[K_d]: x_variation += 5
-        return x_variation
-
-    @staticmethod
-    def _y_variation():
-        keys = pygame.key.get_pressed()
-        y_variation = 0
-        if keys[K_w]: y_variation -= 5
-        if keys[K_s]: y_variation += 5
-        return y_variation
-
-    def absolute_speed_x(self) -> int:
-        return super().absolute_speed_x() + self._x_variation()
-    
-    def absolute_speed_y(self) -> int:
-        return super().absolute_speed_y() + self._y_variation()
+    def update(self, system_absolute_position: tuple[int, int], system_absolute_direction: float, rendering_center: tuple[int, int]) -> None:
+        super().update(system_absolute_position, system_absolute_direction, rendering_center)
+        self._absolute_direction += 0.001
