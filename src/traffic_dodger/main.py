@@ -2,7 +2,6 @@ import pygame
 import sys
 
 from pygame.locals import QUIT
-from game import Game
 
 _WINDOW_TITLE = "Traffic Dodger"
 
@@ -25,9 +24,7 @@ def main():
     surface = pygame.display.get_surface()
     assert surface != None
     fps = pygame.time.Clock()
-    
-    game = Game(surface)
-    
+        
     pygame.init()
     
     while True:
@@ -35,11 +32,8 @@ def main():
             if event.type == QUIT:
                 pygame.quit()
                 sys.exit()
-    
-        game.update()
-    
+        
         surface.fill(_BACKGROUND)
-        game.draw(surface)
     
         pygame.display.update()
         fps.tick(_FRAMERATE)
