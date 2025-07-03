@@ -8,7 +8,7 @@ from sprites import Sheet
 class Enemy(Entity):
     def __init__(self, center: tuple[int, int], limits: tuple[int, int, int, int], *groups: pygame.sprite.Group) -> None:
         self._min_speed_x, self._max_speed_x, self._min_speed_y, self._max_speed_y = limits
-        super().__init__(center, 1, self._compute_speed(), Sheet("assets/sprites", "enemy", {"": 1}), *groups)
+        super().__init__(center, 1, self._compute_speed(), Sheet("assets/sprites/enemy", "enemy", {"": 20}), *groups)
 
     def _compute_speed(self) -> tuple[int, int]:
         return self._compute_speed_x(), self._compute_speed_y()

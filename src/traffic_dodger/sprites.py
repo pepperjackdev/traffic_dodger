@@ -13,7 +13,7 @@ class Sheet:
     def _load(self, folder, name, variants: dict[str, int]):
         for variant in variants.keys():
             for index in range(variants[variant]):
-                image = pygame.image.load(f"{folder}/{name}{variant}{index}.png")
+                image = pygame.image.load(f"{folder}/{name}{variant}{index:02d}.png")
                 if self._sprite_images.get(variant) == None:
                     self._sprite_images[variant] = list()
                 self._sprite_images[variant].append(image)

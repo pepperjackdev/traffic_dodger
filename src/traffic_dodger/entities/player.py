@@ -7,7 +7,7 @@ from sprites import Sheet
 
 class Player(Entity):
     def __init__(self, center: tuple[int, int], *groups: pygame.sprite.Group) -> None:
-        super().__init__(center, 10, (0, -6), Sheet("assets/sprites", "player", {"": 1}), *groups)
+        super().__init__(center, 10, (0, -6), Sheet("assets/sprites/player", "player", {"": 20}), *groups)
         self._score = 0
 
     @staticmethod
