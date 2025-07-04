@@ -8,7 +8,7 @@ Just a game where you have to avoid crashing into moving stuff. Made with Pygame
 A web version of this game is hosted over itch.io [here](https://pepperjackdev.itch.io/traffic-dodger).
 
 ## Download the game
-You can also download the project's source code from its repository and run it with [python](https://www.python.org/).
+You can also download the project's source code from [its repository](github.com/pepperjackdev/traffic_dodger) and run it with [python](https://www.python.org/).
 Once you've downloaded the repository, just run the `main.py` file or use `make run` (you need make to be installed) to run the project.
 
 # Usage
