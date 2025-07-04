@@ -1,2 +1,6 @@
 run:
-	python -B src/traffic_dodger/main.py
+	python -B main.py
+
+pyg:
+	pygbag .
+	explorer http://localhost:8080
